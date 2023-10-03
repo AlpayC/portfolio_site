@@ -18,6 +18,7 @@ You can also check out the live demo of the portfolio website [here](https://alp
 - Developed first with the Mobile First methodology, then for desktop.
 - Compatible with all mobile devices and with a beautiful and pleasant user interface.
 - Smooth scrolling in each section.Contains animations when scrolling.
+- Uptime Service with colored animation
 
 ## Installation
 
@@ -44,6 +45,8 @@ npm run dev
 To run this project, you will need to add the following environment variables to your .env file. See .env-init in root directory
 
 `API_BASE_URL`
+
+`API_SERVICESTATUS_URL`
 
 ## Tech Stack
 
