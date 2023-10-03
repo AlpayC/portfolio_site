@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const ServiceStatus: React.FC = () => {
   const [status, setStatus] = useState("");
+  const apiServiceStatusURL = import.meta.env.VITE_API_SERVICESTATUS_URL || "";
 
   const statusColor = () => {
     if (status === "operational") {
@@ -27,7 +28,7 @@ const ServiceStatus: React.FC = () => {
   useEffect(() => {
     async function getStatusData() {
       try {
-        const response = await axios.get("https://alpaycelik.dev/api/status");
+        const response = await axios.get(apiServiceStatusURL);
         setStatus(response.data.heartbeatResponse.serviceStatus);
       } catch (error) {
         console.error("Failed to get status from backend:", error);
