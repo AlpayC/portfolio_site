@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from "react";
+import React, { lazy } from "react";
 import { Link } from "react-router-dom";
 import { sideBarLeftSocials, FooterLinks } from "../assets/lib/data";
 import { useLanguage } from "../context/language-context";
@@ -7,6 +7,8 @@ import { useTheme } from "../context/theme-context";
 
 import Popup from "reactjs-popup";
 import { VscChromeClose } from "react-icons/vsc";
+const LazyServiceStatus = lazy(() => import("../components/ServiceStatus"));
+
 interface SocialLink {
   link: string;
   icon: string | React.FC<{ className: string }>;
@@ -59,7 +61,7 @@ const Footer: React.FC = () => {
           </Popup>
         ))}
       </div>
-      <div className="socials flex gap-10">
+      <div className="socials flex gap-10 ">
         {sideBarLeftSocials.map((social: SocialLink, index: number) => (
           <Link
             to={social.link}
@@ -84,6 +86,9 @@ const Footer: React.FC = () => {
             )}
           </Link>
         ))}
+      </div>
+      <div>
+        <LazyServiceStatus />
       </div>
     </footer>
   );
