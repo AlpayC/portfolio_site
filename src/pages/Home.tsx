@@ -10,7 +10,6 @@ import ProjectSlider from "../components/ProjectSlider";
 const LazyBannerQuote = lazy(() => import("../components/BannerQuote"));
 const LazySiteBarRight = lazy(() => import("../components/SideBarRight"));
 const LazySiteBarLeft = lazy(() => import("../components/SiteBarLeft"));
-const LazyStatementQuote = lazy(() => import("../components/StatementQuote"));
 const LazyTechStack = lazy(() => import("../components/TechStack"));
 const LazyAboutMe = lazy(() => import("../components/AboutMe"));
 const LazyContact = lazy(() => import("../components/Contact"));
@@ -39,7 +38,11 @@ const Home: React.FC = () => {
         </header>
         <main className="relative">
           <Suspense fallback={<div>Loading...</div>}>
-            <LazyBannerQuote />
+            <LazyBannerQuote
+              style={"withBG"}
+              quoteIndex={0}
+              containerType="quote"
+            />
             <Divider
               thickness="0.25rem"
               direction="outer-right-to-inner-left"
@@ -57,7 +60,11 @@ const Home: React.FC = () => {
               dividerStyle="solid"
             />
 
-            <LazyStatementQuote />
+            <LazyBannerQuote
+              style={"noBG"}
+              quoteIndex={1}
+              containerType="statement"
+            />
             <Divider
               thickness="0.25rem"
               direction="middle"
