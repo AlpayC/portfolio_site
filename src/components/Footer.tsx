@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { sideBarLeftSocials, FooterLinks } from "../assets/lib/data";
 import { useLanguage } from "../context/language-context";
@@ -88,7 +88,9 @@ const Footer: React.FC = () => {
         ))}
       </div>
       <div>
-        <LazyServiceStatus />
+        <Suspense fallback={<div>Loading...</div>}>
+          <LazyServiceStatus />
+        </Suspense>
       </div>
     </footer>
   );

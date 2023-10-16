@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { quotesData } from "../assets/lib/data";
 import { useLanguage } from "../context/language-context";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const StatementQuote: React.FC = () => {
+export function useQuoteAnimation(quoteElementSelector: string) {
   const { language } = useLanguage();
 
-  const quoteTranslation =
-    language === "DE" ? quotesData[1].de : quotesData[1].en;
-
   useEffect(() => {
-    const h2Element = document.querySelector(".statement-container h2");
+    const h2Element = document.querySelector(quoteElementSelector);
 
     if (h2Element) {
       const h2Text = h2Element.textContent || "";
@@ -76,21 +72,5 @@ const StatementQuote: React.FC = () => {
         },
       });
     }
-  }, [quoteTranslation]);
-
-  return (
-    <>
-      <section className="quote-banner relative overflow-x-clip min-[1921px]:px-96">
-        <div className="h-[50vh] -rotate-3 flex justify-center items-center scale-110">
-          <div className="statement-container rotate-3 flex items-center flex-col justify-center p-56 max-lg:p-20">
-            <h2 className="text-[--black] text-center text-9xl mb-20 mt-20 max-lg:text-[3rem] max-lg:mb-10 max-lg:leading-tight">
-              {quoteTranslation}
-            </h2>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default StatementQuote;
+  }, [quoteElementSelector, language]);
+}
